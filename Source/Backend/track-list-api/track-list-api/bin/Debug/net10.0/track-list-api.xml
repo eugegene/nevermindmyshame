@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>track-list-api</name>
+    </assembly>
+    <members>
+        <member name="M:api.Controllers.AuthController.RegisterUser(api.DTOs.UserDto)">
+            <summary>
+                Register new user and get UserDto
+            </summary>
+            <param name="request">UserDto object. Just use make Email and Password in request object</param>
+            <returns>JWT token string</returns>
+            <response code="200">Successfully registered</response>
+            <response code="400">Wrong login or password</response>
+        </member>
+        <member name="M:api.Controllers.AuthController.LoginUser(Microsoft.AspNetCore.Identity.Data.LoginRequest)">
+            <summary>
+                Log in and get UserDto
+            </summary>
+            <param name="request">Standard .Net LoginRequest object. Just use make Email and Password in request object</param>
+            <returns>JWT token string</returns>
+            <response code="200">Successfully logged in</response>
+            <response code="400">Wrong login or password</response>
+        </member>
+        <member name="M:api.Controllers.AuthController.RenewToken(api.DTOs.RequestTypes.RenewTokenRequest)">
+            <summary>
+                Send access token and get UserDto with renewed access and refresh tokens
+            </summary>
+            <param></param>
+            <param name="request"></param>
+            <returns>UserDto</returns>
+            <response code="200">Successfully authorized</response>
+            <response code="400">JWT expired / not correct</response>
+        </member>
+        <member name="T:api.Migrations.init">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:api.Migrations.AddAllModelsToDb">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.AddAllModelsToDb.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.AddAllModelsToDb.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.AddAllModelsToDb.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:api.Migrations.RemoveUserFiles">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.RemoveUserFiles.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.RemoveUserFiles.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:api.Migrations.RemoveUserFiles.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:api.Models.BaseEntity">
+            <summary>
+                Базовий клас для всіх основних сутностей.
+                EF автоматично додасть ці поля до кожної таблиці, що його успадковує.
+            </summary>
+        </member>
+        <member name="T:api.Models.Comment">
+            <summary>
+                Коментарі до рецензій (з 1-рівневою вкладеністю)
+            </summary>
+        </member>
+        <member name="T:api.Models.CommentLike">
+            <summary>
+                Лайки для коментарів
+            </summary>
+        </member>
+        <member name="T:api.Models.Media">
+            <summary>
+                "Ядро" медіа. Зберігає лише не-текстові, незмінні дані.
+            </summary>
+        </member>
+        <member name="T:api.Models.MediaTranslation">
+            <summary>
+                Таблиця перекладів ("ключ:значення"). Вся текстова інфо тут.
+            </summary>
+        </member>
+        <member name="T:api.Models.Playlist">
+            <summary>
+                Epic 8: "Плейлисти" / Добірки
+            </summary>
+        </member>
+        <member name="T:api.Models.PlaylistAccess">
+            <summary>
+                Epic 8: Таблиця доступу в стилі "Google Docs".
+                НЕ успадковує BaseEntity (видалення тут "жорстке").
+            </summary>
+        </member>
+        <member name="T:api.Models.PlaylistItem">
+            <summary>
+                Елементи в "Плейлисті"
+            </summary>
+        </member>
+        <member name="T:api.Models.Report">
+            <summary>
+            Epic 6: Таблиця скарг (репортів) 
+            </summary>
+        </member>
+        <member name="T:api.Models.Review">
+            <summary>
+                Рецензія (BRL-4: 1 юзер - 1 рецензія на 1 медіа)
+            </summary>
+        </member>
+        <member name="T:api.Models.ReviewLike">
+            <summary>
+                Лайки для рецензій
+            </summary>
+        </member>
+        <member name="T:api.Models.TrackingStatus">
+            <summary>
+                Epic 5: Статуси перегляду (BRL-3: 1 юзер - 1 статус на 1 медіа)
+            </summary>
+        </member>
+        <member name="T:api.Result">
+            <summary>
+            class for returning Result type. Contains IsSuccess, Error message and Data.
+            call Ok() if method ended successfully
+            call Fail() if method ended with an error
+            
+            data field will be default, if operation wasn't successful
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,11 @@
+{
+  "language": {
+    "feature": "uk-UA"
+  },
+  "generator": {
+    "allowDebugGeneratedFiles": true,
+    "allowRowTests": true,
+    "generateAsyncSupport": true
+  },
+  "stepAssemblies": []
+}

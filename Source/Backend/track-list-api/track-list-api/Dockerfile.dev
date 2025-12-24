@@ -1,0 +1,47 @@
+﻿# Використовуємо SDK (а не Runtime), щоб мати доступ до команд 'dotnet ef'
+# Це трохи збільшує розмір образу, але ідеально для Dev-середовища
+FROM mcr.microsoft.com/dotnet/sdk:10.0
+WORKDIR /app
+EXPOSE 8080
+
+# Встановлюємо netcat (для очікування бази)
+# В образі SDK (Debian-based) це пакет netcat-openbsd
+RUN apt-get update && apt-get install -y netcat-openbsd && rm -rf /var/lib/apt/lists/*
+
+# Встановлюємо інструмент EF глобально
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
+
+# Копіюємо файл проєкту і робимо restore (кешування)
+COPY ["track-list-api.csproj", "."]
+RUN dotnet restore "track-list-api.csproj"
+
+# Копіюємо весь інший код
+COPY . .
+
+# Створюємо скрипт запуску
+RUN printf '#!/bin/sh\n\
+set -e\n\
+\n\
+DB_HOST="${DB_HOST:-db}"\n\
+DB_PORT="${DB_PORT:-5432}"\n\
+\n\
+echo "⏳ Waiting for DB at $DB_HOST:$DB_PORT..."\n\
+while ! nc -z $DB_HOST $DB_PORT; do\n\
+  sleep 1\n\
+done\n\
+echo "✅ Database is up!"\n\
+\n\
+echo "🔄 Applying EF Migrations..."\n\
+# Ця команда сама знайде контекст і оновить базу\n\
+# Ми ігноруємо помилки (|| true), щоб якщо міграція впаде, контейнер не помер\n\
+dotnet ef database update || echo "⚠️ Migration failed, check logs but starting anyway..."\n\
+\n\
+echo "🚀 Starting API..."\n\
+# Запускаємо в режимі Watch (або просто run), щоб бачити логи\n\
+dotnet run --no-launch-profile --urls "http://0.0.0.0:8080"\n\
+' > /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

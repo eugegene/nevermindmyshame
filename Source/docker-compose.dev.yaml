@@ -1,0 +1,49 @@
+services:
+  # --- CADDY (Імітуємо реальну маршрутизацію) ---
+  dev-caddy:
+    image: caddy:alpine
+    container_name: caddy-dev
+    ports:
+      - "80:80" 
+    volumes:
+      # Використовуємо спрощений конфіг прямо в команді, щоб не створювати окремий файл
+      - ./Caddyfile.dev:/etc/caddy/Caddyfile
+      - ./uploads:/srv/uploads
+    depends_on:
+      - dev-api
+
+  # --- API (.NET в режимі Watch) ---
+  dev-api:
+    image: mcr.microsoft.com/dotnet/sdk:10.0
+    working_dir: /app/track-list-api
+    build:
+      context: ./Backend/track-list-api/track-list-api
+      dockerfile: Dockerfile.dev
+    volumes:
+      # Монтуємо всю папку бекенду
+      - ./Backend/track-list-api:/app 
+    env_file:
+      - .env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    # 'dotnet watch' автоматично перезапускає сервер при зміні коду
+    command: dotnet watch run --urls=http://0.0.0.0:8080 
+    depends_on:
+      - dev-db
+
+  # --- DB ---
+  dev-db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432" # Відкриваємо порт для твого DBeaver / Datagrip
+    volumes:
+      - dev_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dev-tracklistdb
+
+volumes:
+  dev_postgres_data: # Окремий том для дев-бази, щоб не плутати з продом

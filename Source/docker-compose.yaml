@@ -1,0 +1,53 @@
+﻿services:
+  caddy:
+    image: caddy:alpine
+    container_name: caddy-gateway
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./uploads:/srv/uploads
+    depends_on:
+      - api
+      - web
+
+  web:
+    image: track-list-web
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+    restart: on-failure
+
+  api:
+    image: track-list-api
+    build:
+      context: ./Backend/track-list-api/track-list-api
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    env_file:
+      - .env
+    #volumes:
+    #  - ./uploads:/app/uploads
+    restart: on-failure
+  
+  db:
+    image: postgres:16-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: tracklistdb
+
+volumes:
+  caddy_data:
+  caddy_config:
+  postgres_data:
+
