@@ -10,6 +10,12 @@ export interface LoginRequest {
   password: string;
 }
 
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  role?: string;
+}
+
 export interface RenewTokenRequest {
   refreshToken: string;
 }

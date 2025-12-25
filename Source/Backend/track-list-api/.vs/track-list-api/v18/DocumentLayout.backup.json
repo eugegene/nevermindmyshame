@@ -1,0 +1,126 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|d:\\group-diploma-track-list\\source\\backend\\track-list-api\\track-list-api\\configure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|solutionrelative:track-list-api\\configure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|d:\\group-diploma-track-list\\source\\backend\\track-list-api\\track-list-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|solutionrelative:track-list-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|d:\\group-diploma-track-list\\source\\backend\\track-list-api\\track-list-api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|solutionrelative:track-list-api\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|d:\\group-diploma-track-list\\source\\backend\\track-list-api\\track-list-api\\track-list-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|solutionrelative:track-list-api\\track-list-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|d:\\group-diploma-track-list\\source\\backend\\track-list-api\\track-list-api\\entrypoint.sh||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|solutionrelative:track-list-api\\entrypoint.sh||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|d:\\group-diploma-track-list\\source\\backend\\track-list-api\\track-list-api\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EFAC1E8-8F5E-4EF6-A470-F88BEBC23C60}|track-list-api\\track-list-api.csproj|solutionrelative:track-list-api\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Configure.cs",
+              "DocumentMoniker": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Configure.cs",
+              "RelativeDocumentMoniker": "track-list-api\\Configure.cs",
+              "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Configure.cs",
+              "RelativeToolTip": "track-list-api\\Configure.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAAwKYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T13:14:27.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "track-list-api",
+              "DocumentMoniker": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\track-list-api.csproj",
+              "RelativeDocumentMoniker": "track-list-api\\track-list-api.csproj",
+              "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\track-list-api.csproj",
+              "RelativeToolTip": "track-list-api\\track-list-api.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-25T13:10:14.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dockerfile",
+              "DocumentMoniker": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Dockerfile",
+              "RelativeDocumentMoniker": "track-list-api\\Dockerfile",
+              "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Dockerfile",
+              "RelativeToolTip": "track-list-api\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-12-25T13:09:07.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "entrypoint.sh",
+              "DocumentMoniker": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\entrypoint.sh",
+              "RelativeDocumentMoniker": "track-list-api\\entrypoint.sh",
+              "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\entrypoint.sh",
+              "RelativeToolTip": "track-list-api\\entrypoint.sh",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|",
+              "WhenOpened": "2025-12-25T13:09:01.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Result.cs",
+              "DocumentMoniker": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Result.cs",
+              "RelativeDocumentMoniker": "track-list-api\\Result.cs",
+              "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Result.cs",
+              "RelativeToolTip": "track-list-api\\Result.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T13:08:56.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Program.cs",
+              "RelativeDocumentMoniker": "track-list-api\\Program.cs",
+              "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Program.cs",
+              "RelativeToolTip": "track-list-api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-25T13:08:43.645Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

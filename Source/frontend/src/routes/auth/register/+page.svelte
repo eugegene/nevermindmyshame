@@ -1,32 +1,53 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-    // import { AuthService } from '$lib/services/auth.service'; // Розкоментуйте, коли додасте метод register
+	import { AuthService } from '$lib/services/auth.service';
+	import { storage } from '$lib/utils/storage';
+	import { Validator, RequiredStrategy, EmailStrategy, MinLengthStrategy, PasswordMatchStrategy } from '$lib/utils/validation';
 
 	let email = $state('');
 	let password = $state('');
 	let confirmPassword = $state('');
+	
+	// оптімістік стейт
 	let isLoading = $state(false);
-	let errorMsg = $state('');
+	let serverError = $state('');
+	
+	// клаєнтська валідація
+	let errors = $state({ email: '', password: '', confirm: '' });
+
+	function validateForm(): boolean {
+		errors.email = Validator.validate(email, [RequiredStrategy, EmailStrategy]) || '';
+		errors.password = Validator.validate(password, [RequiredStrategy, MinLengthStrategy(6)]) || '';
+		errors.confirm = Validator.validate(confirmPassword, [RequiredStrategy, PasswordMatchStrategy], password) || '';
+		
+		return !errors.email && !errors.password && !errors.confirm;
+	}
 
 	async function handleRegister(e: Event) {
 		e.preventDefault();
-		errorMsg = '';
+		serverError = '';
 
-		if (password !== confirmPassword) {
-			errorMsg = 'Паролі не співпадають';
-			return;
-		}
+		if (!validateForm()) return;
 
-		isLoading = true;
+		isLoading = true; // блокування інтерфейсу до відповіді сервера
 
 		try {
-			console.log('Реєстрація:', { email, password });
-            
-            await new Promise(r => setTimeout(r, 1000));
-            
-			goto('/auth/login');
+			const user = await AuthService.register({ email, password });
+			
+			// якщо бекенд повертає токени при реєстрації (UserDto) - логін
+			if (user && user.accessToken) {
+				storage.setToken(user.accessToken);
+                // збереження рефреш токену
+                if(user.refreshToken) localStorage.setItem('refresh_token', user.refreshToken);
+				
+                await goto('/profile');
+			} else {
+				// якщо нема токенів
+				await goto('/auth/login');
+			}
 		} catch (err: any) {
-			errorMsg = err.body?.message || "Помилка реєстрації.";
+			console.error(err);
+			serverError = err.body?.message || typeof err === 'string' ? err : "Помилка реєстрації. Спробуйте пізніше.";
 		} finally {
 			isLoading = false;
 		}
@@ -40,22 +61,24 @@
 			Створити акаунт
 		</h1>
 
-		{#if errorMsg}
-			<div class="mb-4 p-3 rounded bg-red-500/10 border border-red-500/50 text-red-200 text-sm text-center">
-				{errorMsg}
+		{#if serverError}
+			<div class="mb-4 p-3 rounded bg-red-500/10 border border-red-500/50 text-red-200 text-sm text-center animate-pulse">
+				{serverError}
 			</div>
 		{/if}
 
-		<form onsubmit={handleRegister} class="space-y-5">
+		<form onsubmit={handleRegister} class="space-y-5" novalidate>
 			<div>
 				<label for="email" class="block text-sm font-medium text-text-muted mb-1">Email</label>
 				<input 
 					id="email"
 					type="email" 
 					bind:value={email}
+					onblur={() => errors.email = Validator.validate(email, [RequiredStrategy, EmailStrategy]) || ''}
 					required
-					class="w-full bg-bkg-main text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all"
+					class="w-full bg-bkg-main text-white px-4 py-3 rounded-lg border {errors.email ? 'border-red-500' : 'border-gray-700'} focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all"
 				/>
+				{#if errors.email} <p class="text-red-400 text-xs mt-1">{errors.email}</p> {/if}
 			</div>
 
 			<div>
@@ -64,9 +87,11 @@
 					id="password"
 					type="password" 
 					bind:value={password}
+					onblur={() => errors.password = Validator.validate(password, [RequiredStrategy, MinLengthStrategy(6)]) || ''}
 					required
-					class="w-full bg-bkg-main text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all"
+					class="w-full bg-bkg-main text-white px-4 py-3 rounded-lg border {errors.password ? 'border-red-500' : 'border-gray-700'} focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all"
 				/>
+				{#if errors.password} <p class="text-red-400 text-xs mt-1">{errors.password}</p> {/if}
 			</div>
 
             <div>
@@ -75,17 +100,20 @@
 					id="confirm_password"
 					type="password" 
 					bind:value={confirmPassword}
+					oninput={() => errors.confirm = Validator.validate(confirmPassword, [PasswordMatchStrategy], password) || ''}
 					required
-					class="w-full bg-bkg-main text-white px-4 py-3 rounded-lg border border-gray-700 focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all"
+					class="w-full bg-bkg-main text-white px-4 py-3 rounded-lg border {errors.confirm ? 'border-red-500' : 'border-gray-700'} focus:border-brand-accent focus:ring-1 focus:ring-brand-accent outline-none transition-all"
 				/>
+				{#if errors.confirm} <p class="text-red-400 text-xs mt-1">{errors.confirm}</p> {/if}
 			</div>
 
 			<button 
 				type="submit" 
 				disabled={isLoading}
-				class="w-full bg-white hover:bg-gray-200 text-black font-bold py-3 rounded-lg transition-all transform active:scale-95 disabled:opacity-50"
+				class="w-full bg-white hover:bg-gray-200 text-black font-bold py-3 rounded-lg transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
 			>
 				{#if isLoading}
+					<span class="inline-block w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin mr-2"></span>
 					Реєстрація...
 				{:else}
 					Створити акаунт

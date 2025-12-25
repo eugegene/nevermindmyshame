@@ -1,9 +1,23 @@
 import { api } from "$lib/api";
-import type { LoginRequest, RenewTokenRequest, UserDto } from "$lib/types/auth";
+import type {
+  LoginRequest,
+  RegisterRequest,
+  RenewTokenRequest,
+  UserDto,
+} from "$lib/types/auth";
 
 export const AuthService = {
   login: async (creds: LoginRequest, customFetch?: typeof fetch) => {
     return await api.post<UserDto>("auth/login", creds, undefined, customFetch);
+  },
+
+  register: async (data: RegisterRequest, customFetch?: typeof fetch) => {
+    return await api.post<UserDto>(
+      "auth/register",
+      data,
+      undefined,
+      customFetch
+    );
   },
 
   renewToken: async (refreshToken: string, customFetch?: typeof fetch) => {

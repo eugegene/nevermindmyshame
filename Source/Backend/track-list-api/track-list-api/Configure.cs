@@ -153,16 +153,25 @@ internal static class Configure
                 Title = " API",
                 Description = "An ASP.NET Core Web API for UActive wep-app"
             });
+            //const string xmlFilename = @"swagger_docs.xml";
+            //try
+            //{
+            //    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            //}
+            //catch (XmlException)
+            //{
+            //    File.Create(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            //}
+            //var xmlFilename = $"{typeof(Program).Assembly.GetName().Name}.xml";
+            //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+            var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
-            const string xmlFilename = @"swagger_docs.xml";
-            try
+            if (File.Exists(xmlPath))
             {
-                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+                options.IncludeXmlComments(xmlPath);
             }
-            catch (XmlException)
-            {
-                File.Create(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-            }
+
         });
     }
 

@@ -6,14 +6,6 @@ import { storage } from "$lib/utils/storage";
 
 const BASE_URL = PUBLIC_API_URL.replace(/\/$/, "");
 
-type SendOptions = {
-  method: "GET" | "POST" | "PUT" | "DELETE";
-  path: string;
-  data?: unknown;
-  token?: string; // Можна передати токен вручну (для SSR)
-  customFetch?: typeof fetch;
-};
-
 async function send<T>({
   method,
   path,
@@ -26,8 +18,6 @@ async function send<T>({
     "Content-Type": "application/json",
   };
 
-  // Якщо токен передали вручну - беремо його.
-  // Якщо ні, і ми в браузері - пробуємо дістати з localStorage.
   const authToken = token || storage.getToken();
 
   if (authToken) {
@@ -57,12 +47,20 @@ async function send<T>({
 
     if (!res.ok) {
       let errMessage = "Помилка сервера";
+
+      // ВИПРАВЛЕННЯ ТУТ:
+      // 1. Читаємо тіло як текст (один раз)
+      const errorText = await res.text();
+
       try {
-        const errData = await res.json();
+        // 2. Пробуємо розпарсити цей текст як JSON
+        const errData = JSON.parse(errorText);
         errMessage = errData.error || errData.message || errMessage;
       } catch {
-        errMessage = (await res.text()) || errMessage;
+        // 3. Якщо парсинг не вдався, використовуємо сирий текст
+        errMessage = errorText || errMessage;
       }
+
       throw error(res.status, errMessage);
     }
 
