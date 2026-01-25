@@ -40,5 +40,8 @@
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.48.1",
 		"vite": "^7.1.10"
+	},
+	"dependencies": {
+		"jsonwebtoken": "^9.0.3"
 	}
 }

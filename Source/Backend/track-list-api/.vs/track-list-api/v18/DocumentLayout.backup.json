@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "track-list-api\\Configure.cs",
               "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\Configure.cs",
               "RelativeToolTip": "track-list-api\\Configure.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAAwKkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAAwKoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-25T13:14:27.393Z",
               "EditorCaption": ""
@@ -56,15 +56,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "track-list-api",
+              "Title": "track-list-api.csproj",
               "DocumentMoniker": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\track-list-api.csproj",
               "RelativeDocumentMoniker": "track-list-api\\track-list-api.csproj",
               "ToolTip": "D:\\group-diploma-track-list\\Source\\Backend\\track-list-api\\track-list-api\\track-list-api.csproj",
               "RelativeToolTip": "track-list-api\\track-list-api.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-12-25T13:10:14.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T13:10:14.946Z"
             },
             {
               "$type": "Document",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "track-list-api\\Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-12-25T13:09:07.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T13:09:07.962Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "track-list-api\\entrypoint.sh",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|",
-              "WhenOpened": "2025-12-25T13:09:01.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T13:09:01.44Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "track-list-api\\Result.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T13:08:56.518Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T13:08:56.518Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "track-list-api\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-25T13:08:43.645Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-25T13:08:43.645Z"
             }
           ]
         }
